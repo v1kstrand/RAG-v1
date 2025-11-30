@@ -2,7 +2,6 @@ from typing import Any, Iterable, List
 
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
-
 from .config import LLMConfig
 
 
