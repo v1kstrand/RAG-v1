@@ -1,6 +1,6 @@
 # TechQA RAG (modular)
 
-This repository refactors the original notebook-style `main.py` into a small, modular RAG toolkit for the TechQA dataset. Core functionality lives in the `rag/` package, while runnable entrypoints are in `scripts/` and the `main.py` CLI.
+This repository is a small, modular RAG toolkit for the TechQA dataset. Core functionality lives in the `rag/` package, while runnable entrypoints are in `scripts/` and the `main.py` CLI.
 
 ## Layout
 - `rag/`: shared modules (config, data prep, embeddings, retrieval, LLM prompt/answer pipeline).
