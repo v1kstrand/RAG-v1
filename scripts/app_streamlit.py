@@ -18,9 +18,9 @@ from rag.pipeline import answer_question
 
 
 # ---------- Config ----------
-DEFAULT_EMBEDDING_PATH = Path("data/embeddings/techqa_bge.pt")
-ENCODER_DEVICE = "cuda"   # change to "cpu" if needed
-LLM_DEVICE = "cuda"       # change to "cpu" if needed
+DEFAULT_EMBEDDING_PATH = ROOT / "data/embeddings/techqa_bge.pt"
+ENCODER_DEVICE = "cuda"
+LLM_DEVICE = "cuda"
 
 PAGE_TITLE = "TechQA RAG Demo"
 PAGE_ICON = "📚"
