@@ -2,6 +2,12 @@ import time
 from pathlib import Path
 from typing import Any, Dict, List
 
+import sys
+from pathlib import Path as _Path
+ROOT = _Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
 import streamlit as st
 
 from rag.config import EncoderConfig, LLMConfig, DatasetConfig
