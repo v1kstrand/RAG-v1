@@ -7,11 +7,17 @@ from .config import LLMConfig
 
 
 DEFAULT_SYSTEM_PROMPT = (
-    "You are a helpful technical support assistant. "
-    "Explain the root cause briefly and then give the concrete workaround or commands "
-    "the user should run, based ONLY on the documents. "
-    "If the documents do not contain a clear solution, say you are not sure."
+    "You are a senior technical support assistant.\n\n"
+    "Your job is to help the user solve technical issues using ONLY the information in the provided documents.\n"
+    "- First, briefly explain the root cause in plain language.\n"
+    "- Then give concrete steps, commands, or configuration changes the user should apply.\n"
+    "- When you copy commands or flags from the docs, reproduce them EXACTLY (including flags, spelling, and punctuation).\n"
+    "- If multiple documents disagree, prefer the most direct and explicit workaround.\n"
+    "- If the documents do not clearly contain a solution, explicitly say you are not sure and suggest what kind of information is missing.\n"
+    "- Do NOT invent tools, flags, environment variables, or file paths that are not present in the documents.\n"
+    "- If you reference a document, mention its DOC number (e.g., DOC 1, DOC 2) in your answer."
 )
+
 
 
 class QwenClient:
@@ -33,12 +39,12 @@ class QwenClient:
     ) -> List[dict[str, str]]:
         context_block = self.format_contexts(retrieved)
         user_content = f"""Question:
-{question}
+        {question}
 
-Relevant documents:
-{context_block}
+        Relevant documents:
+        {context_block}
 
-Answer the question in your own words. If you use a document, mention its DOC number."""
+        Answer the question in your own words. If you use a document, mention its DOC number."""
 
         return [
             {"role": "system", "content": system_prompt},
